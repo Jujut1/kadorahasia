@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kado Misterius - Selamat Ulang Tahun!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-to-you-443.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- HALAMAN 1: PERTANYAAN PERKENALAN -->
+    <section id="intro-section" class="section active">
+        <div class="container">
+            <div class="intro-content">
+                <h1 class="title">🎁 <span class="glow">KADO MISTERIUS</span> 🎁</h1>
+                <p class="subtitle">Sebuah kejutan spesial menantimu...</p>
+                
+                <div class="question-box">
+                    <h2><i class="fas fa-question-circle"></i> Siapakah Namamu?</h2>
+                    <p>Masukkan namamu untuk memulai petualangan ini</p>
+                    
+                    <div class="input-group">
+                        <input type="text" id="userName" placeholder="Ketik namamu di sini..." maxlength="20">
+                        <button id="startJourneyBtn">
+                            <i class="fas fa-play"></i> Mulai Petualangan
+                        </button>
+                    </div>
+                    
+                    <div class="hint">
+                        <i class="fas fa-lightbulb"></i> Setelah ini, ada game kecil yang seru!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HALAMAN 2: GAME TEBAK ANGKA -->
+    <section id="game-section" class="section">
+        <div class="container">
+            <div class="game-header">
+                <h1>🎮 <span id="playerName">Teman</span>, Ayo Bermain!</h1>
+                <p class="subtitle">Tebak angka untuk membuka kunci kado</p>
+            </div>
+            
+            <div class="game-container">
+                <div class="game-rules">
+                    <h3><i class="fas fa-scroll"></i> Aturan Game:</h3>
+                    <ul>
+                        <li><i class="fas fa-dice"></i> Saya pikirkan angka 1-10</li>
+                        <li><i class="fas fa-search"></i> Kamu punya 3 kesempatan</li>
+                        <li><i class="fas fa-key"></i> Tebak benar = Kado terbuka!</li>
+                        <li><i class="fas fa-trophy"></i> Semakin cepat, semakin baik!</li>
+                    </ul>
+                </div>
+                
+                <div class="game-board">
+                    <div class="number-display">
+                        <div class="number-box">?</div>
+                        <p>Angka Rahasia</p>
+                    </div>
+                    
+                    <div class="game-controls">
+                        <div class="number-selector">
+                            <button class="num-btn" data-number="1">1</button>
+                            <button class="num-btn" data-number="2">2</button>
+                            <button class="num-btn" data-number="3">3</button>
+                            <button class="num-btn" data-number="4">4</button>
+                            <button class="num-btn" data-number="5">5</button>
+                            <button class="num-btn" data-number="6">6</button>
+                            <button class="num-btn" data-number="7">7</button>
+                            <button class="num-btn" data-number="8">8</button>
+                            <button class="num-btn" data-number="9">9</button>
+                            <button class="num-btn" data-number="10">10</button>
+                        </div>
+                        
+                        <div class="game-info">
+                            <p><i class="fas fa-heart"></i> Kesempatan: <span id="attemptsLeft">3</span></p>
+                            <p><i class="fas fa-history"></i> Tebakanmu: <span id="guesses">-</span></p>
+                            <p><i class="fas fa-star"></i> Score: <span id="score">0</span></p>
+                        </div>
+                        
+                        <div class="game-feedback" id="gameFeedback">
+                            <i class="fas fa-gamepad"></i> Pilih angka di atas!
+                        </div>
+                        
+                        <button id="hintBtn" class="hint-btn">
+                            <i class="fas fa-lightbulb"></i> Minta Petunjuk
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="game-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="gameProgress"></div>
+                    </div>
+                    <p>Progress Membuka Kado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HALAMAN 3: AMPLOP KADO -->
+    <section id="envelope-section" class="section">
+        <div class="container">
+            <div class="header-text">
+                <h1 class="congrats-text">🎉 SELAMAT <span id="winnerName">[Nama]</span>! 🎉</h1>
+                <p class="subtitle">Kamu berhasil membuka kunci! Sekarang waktunya...</p>
+            </div>
+            
+            <div class="envelope-container">
+                <div class="envelope-wrapper">
+                    <div class="envelope" id="mainEnvelope">
+                        <div class="envelope-front">
+                            <div class="seal">
+                                <i class="fas fa-lock-open"></i>
+                            </div>
+                            <div class="envelope-text">
+                                <h3>KADO SPESIAL</h3>
+                                <p>Hanya untukmu</p>
+                            </div>
+                        </div>
+                        <div class="envelope-flap"></div>
+                        <div class="letter">
+                            <div class="letter-content">
+                                <i class="fas fa-gift"></i>
+                                <h2>Sebuah Kejutan</h2>
+                                <p>Klik amplop untuk membuka hadiahmu</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="envelope-info">
+                    <div class="info-card">
+                        <i class="fas fa-user-check"></i>
+                        <div>
+                            <p class="info-label">Untuk</p>
+                            <p class="info-value" id="recipientDisplay">[Nama Penerima]</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-heart-circle-check"></i>
+                        <div>
+                            <p class="info-label">Dari</p>
+                            <p class="info-value" id="senderDisplay">[Nama Pengirim]</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="open-envelope-btn" id="openEnvelopeBtn">
+                    <i class="fas fa-hand-point-up"></i> Sentuh Amplop untuk Membuka
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- HALAMAN 4: KADO TERBUKA -->
+    <section id="gift-section" class="section">
+        <div class="container">
+            <div class="celebration-animation">
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+            </div>
+            
+            <div class="gift-header">
+                <h1 class="glow-text">🎁 HADIAH UNTUKMU 🎁</h1>
+                <p class="subtitle">Inilah kejutan yang telah kami siapkan</p>
+            </div>
+            
+            <div class="gift-content">
+                <div class="photo-display">
+                    <div class="photo-frame-gold">
+                        <div class="photo" id="finalPhoto">
+                            <!-- Foto akan dimuat via JS -->
+                        </div>
+                    </div>
+                    <p class="photo-caption">Orang Spesial Hari Ini!</p>
+                </div>
+                
+                <div class="message-display">
+                    <div class="message-card">
+                        <div class="message-header">
+                            <i class="fas fa-quote-left"></i>
+                            <h3>Pesan Spesial</h3>
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        
+                        <div class="message-body">
+                            <p class="message-text" id="finalMessage">
+                                [Pesan akan dimuat di sini]
+                            </p>
+                            
+                            <div class="message-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar-check"></i>
+                                    <span>Tanggal: <span id="messageDate">Hari ini</span></span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-heart-pulse"></i>
+                                    <span>Dikirim dengan: <span id="messageLove">Cinta</span></span>
+                                </div>
+                            </div>
+                            
+                            <div class="signature">
+                                <div class="signature-line"></div>
+                                <p>Dengan penuh kasih sayang,</p>
+                                <h3 id="finalSender">[Tim Kado Digital]</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gift-actions">
+                <button class="action-btn share-btn" id="shareBtn">
+                    <i class="fas fa-share-alt"></i> Bagikan Kebahagiaan
+                </button>
+                <button class="action-btn replay-btn" id="replayBtn">
+                    <i class="fas fa-redo"></i> Main Lagi
+                </button>
+                <button class="action-btn music-btn" id="musicToggle">
+                    <i class="fas fa-music"></i> Musik
+                </button>
+            </div>
+            
+            <div class="footer-note">
+                <p><i class="fas fa-sparkles"></i> Kado digital ini dibuat khusus untukmu. Semoga harimu menyenangkan!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Control -->
+    <div class="music-control">
+        <button id="musicControlBtn" class="music-btn">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
